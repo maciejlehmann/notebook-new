@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <title>Add/Edit Note</title>
+    <style>
+        body {
+            background-color: #1d1e20;
+        }
+
+        h1 {
+            color: #b7bbc0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .top {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            height: 50px;
+            margin-bottom: 40px;
+        }
+
+        .add {
+            width: 30%;
+            margin: auto;
+            color: #b7bbc0;
+            border-radius: 7px;
+            background-color: #202124;
+            padding: 20px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        input[type=text], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #5f6368;
+            border-radius: 7px;
+            box-sizing: border-box;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 20px;
+            background-color: #202124;
+            color: #b7bbc0;
+        }
+
+        input[type=date], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #5f6368;
+            border-radius: 7px;
+            box-sizing: border-box;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 20px;
+            background-color: #202124;
+            color: #b7bbc0;
+        }
+
+        input[type=submit] {
+            width: 100%;
+            background-color: #1d1e20;
+            color: #b7bbc0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 20px;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: 1px solid #5f6368;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        .button {
+            width: 25%;
+            background-color: #1d1e20;
+            color: #b7bbc0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 20px;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: 1px solid #5f6368;
+            border-radius: 7px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .span {
+            color: #910c0c;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 20px;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="top">
+    <h1>Dodaj/Edytuj notatkę</h1>
+</div>
+
+<div class="add">
+    <form action="#" th:action="@{/createNote}" th:object="${noteDto}" method="post">
+        <input type="text" th:field="*{title}" class="form-control" id="title" placeholder="Tytuł"/>
+        <input type="text" th:field="*{author}" class="form-control" id="author" placeholder="Autor"/>
+        <input type="text" th:field="*{message}" class="form-control" id="message" placeholder="Treść"/>
+        <input type="date" th:field="*{date}" class="form-control" id="date" placeholder="Data"/>
+        <input type="text" th:field="*{answer}" class="form-control" id="ans"
+               placeholder="Ile wynosi pierwiastek kwadratowy z 9?">
+        <input type="submit" value="Potwierdź">
+        <input type="hidden" id="id" th:field="*{id}">
+    </form>
+    <a th:href="@{/}" class="button">Powrót</a><br>
+    <span th:if="${messageAdd != null}">
+        <span th:text="${messageAdd}" class="span"></span>
+    </span>
+</div>
+
+</body>
+
+</html>
